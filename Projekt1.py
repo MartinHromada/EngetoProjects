@@ -55,7 +55,13 @@ else:
     analyzedText = TEXTS[int(choice) - 1].split()
     print(separator)
 
-clearWords = [slovo.strip(' ,.-§¨)?:_"!/(') for slovo in analyzedText]
+clearWords = []
+for slovo in analyzedText:
+    clearWord = slovo.strip(' ,.-§¨)?:_"!/(')
+    if slovo in ' ,.-§¨)?:_"!/(':
+        continue
+    else:
+        clearWords.append(clearWord)
 
 countDict = {'word': len([word for word in clearWords]),
              'numm': len([word for word in clearWords if word.isnumeric()]),
