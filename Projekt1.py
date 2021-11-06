@@ -29,7 +29,8 @@ garpike and stingray are also present.'''
 ]
 
 SEPARATOR = '-' * 40
-REG_USSERS = {'bob': '123', 'ann': 'pass123', 'mike': 'password123', 'liz': 'pass123'}
+REG_USSERS = {'bob': '123', 'ann': 'pass123', 'mike': 'password123',
+              'liz': 'pass123'}
 
 inpt_ussername = input('Ussername: ')
 inpt_password = input('Password: ')
@@ -62,8 +63,10 @@ COUNT_DICT = {'word': len([word for word in CLEAR_WORDS]),
               'numm': len([word for word in CLEAR_WORDS if word.isnumeric()]),
               'low': len([word for word in CLEAR_WORDS if word.islower()]),
               'tit': len([word for word in CLEAR_WORDS if word.istitle()]),
-              'upp': len([word for word in CLEAR_WORDS if word.isupper() and word.isalpha()]),
-              'nummSum': sum([int(word) for word in CLEAR_WORDS if word.isnumeric()])
+              'upp': len([word for word in CLEAR_WORDS
+                          if word.isupper() and word.isalpha()]),
+              'nummSum': sum([int(word) for word in CLEAR_WORDS
+                              if word.isnumeric()])
               }
 
 WORDS_LEN = {}
