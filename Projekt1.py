@@ -94,4 +94,3 @@ for i in sorted(WORDS_LEN.keys()):
           f"{'|'.rjust(jg2 + 1 - WORDS_LEN.get(i))}{str(WORDS_LEN.get(i))}")
 
 print(SEPARATOR)
-#
