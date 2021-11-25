@@ -54,46 +54,46 @@ elif int(choice) not in range(1, len(TEXTS) + 1):
     print(f"Out of texts range.\nClosing...\n{SEPARATOR}")
     exit()
 else:
-    CLEAR_WORDS = [slovo.strip(pun) for slovo in TEXTS[int(choice) - 1].split()
+    clear_words = [slovo.strip(pun) for slovo in TEXTS[int(choice) - 1].split()
                    if slovo.strip(pun) != '']
 
 print(SEPARATOR)
 
-COUNT_DICT = {'word': len([word for word in CLEAR_WORDS]),
-              'numm': len([word for word in CLEAR_WORDS if word.isnumeric()]),
-              'low': len([word for word in CLEAR_WORDS if word.islower()]),
-              'tit': len([word for word in CLEAR_WORDS if word.istitle()]),
-              'upp': len([word for word in CLEAR_WORDS
+count_dict = {'word': len([word for word in clear_words]),
+              'numm': len([word for word in clear_words if word.isnumeric()]),
+              'low': len([word for word in clear_words if word.islower()]),
+              'tit': len([word for word in clear_words if word.istitle()]),
+              'upp': len([word for word in clear_words
                           if word.isupper() and word.isalpha()]),
-              'nummSum': sum([int(word) for word in CLEAR_WORDS
+              'nummSum': sum([int(word) for word in clear_words
                               if word.isnumeric()])
               }
 
-WORDS_LEN = {}
+words_len = {}
 
-for word in CLEAR_WORDS:
-    if len(word) not in WORDS_LEN.keys():
-        WORDS_LEN.setdefault(len(word), 1)
+for word in clear_words:
+    if len(word) not in words_len.keys():
+        words_len.setdefault(len(word), 1)
     else:
-        WORDS_LEN[len(word)] += 1
+        words_len[len(word)] += 1
 
-print(f"""There are {COUNT_DICT.get('word')} in selected text.
-There are {COUNT_DICT.get('tit')} titlecase words.
-There are {COUNT_DICT.get('upp')} uppercase words.
-There are {COUNT_DICT.get('low')} lowercase words.
-There are {COUNT_DICT.get('numm')} numeric words.
-The summ of all the numbers is {COUNT_DICT.get('nummSum')}.""")
+print(f"""There are {count_dict.get('word')} in selected text.
+There are {count_dict.get('tit')} titlecase words.
+There are {count_dict.get('upp')} uppercase words.
+There are {count_dict.get('low')} lowercase words.
+There are {count_dict.get('numm')} numeric words.
+The summ of all the numbers is {count_dict.get('nummSum')}.""")
 
 print(SEPARATOR)
 
-jg1 = len(str(sorted(WORDS_LEN.keys(), reverse=True)[0])) + 1
-jg2 = sorted(WORDS_LEN.values(), reverse=True)[0] + 1
+jg1 = len(str(sorted(words_len.keys(), reverse=True)[0])) + 1
+jg2 = sorted(words_len.values(), reverse=True)[0] + 1
 
 print(f"{'LEN'.rjust(jg1)}|{'OCCURENCES'.center(jg2)}"
       f"{'|Nr.'.ljust(jg2 - len('OCCURENCES'))}\n{SEPARATOR}")
 
-for i in sorted(WORDS_LEN.keys()):
-    print(f"{str(i).rjust(jg1)}|{'*' * WORDS_LEN.get(i)}"
-          f"{'|'.rjust(jg2 + 1 - WORDS_LEN.get(i))}{str(WORDS_LEN.get(i))}")
+for i in sorted(words_len.keys()):
+    print(f"{str(i).rjust(jg1)}|{'*' * words_len.get(i)}"
+          f"{'|'.rjust(jg2 + 1 - words_len.get(i))}{str(words_len.get(i))}")
 
 print(SEPARATOR)
